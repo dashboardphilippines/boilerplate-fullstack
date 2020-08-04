@@ -4,7 +4,6 @@ This boilerplate contains the common code of Dashboard Labs' fullstack stack whi
 
 - Apollo GraphQL Service
 - Express Server
-- Apollo GraphQL Service
 - NextJS
 - Material UI
 
@@ -28,7 +27,7 @@ Server will be running on PORT 3000 unless otherwise specified (through the PORT
 
 ## Where can I access my GraphQL endpoint? 
 
-Go to `/graphql`
+Go to `/graphql`. The GraphQL Playground is accessible on DEV mode only for security reasons.
 
 ## Project Setup
 
