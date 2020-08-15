@@ -25,7 +25,6 @@ module.exports = {
     '@typescript-eslint/quotes': ['error', 'single', { avoidEscape: true }],
     camelcase: 'off',
     'comma-dangle': 2,
-    indent: ['error', 2],
     'no-extra-semi': 2,
     'no-irregular-whitespace': 2,
     'no-lonely-if': 2,
