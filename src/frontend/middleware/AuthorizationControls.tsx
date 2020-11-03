@@ -3,11 +3,11 @@ const globalAny: any = global
 
 import React, { ReactElement, useState } from 'react'
 import Cookies from 'js-cookie'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 
 import query from './query'
 import { Typography, makeStyles } from '@material-ui/core'
-import PaperContainer from 'frontend/components/PaperContainer'
+import PaperContainer from '../components/PaperContainer'
 
 const useStyles = makeStyles((theme) => ({
   container: {

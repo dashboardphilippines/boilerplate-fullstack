@@ -1,4 +1,4 @@
-import { Test } from '../../../../_types/test'
+import { Test } from '../../../_types/test'
 
 export default (): Test[] => {
   return [

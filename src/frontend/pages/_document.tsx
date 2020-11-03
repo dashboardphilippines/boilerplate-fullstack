@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/styles'
 
-import theme from 'frontend/themes/theme'
+import theme from '../themes/theme'
 
 class MyDocument extends Document {
   render(): ReactElement {

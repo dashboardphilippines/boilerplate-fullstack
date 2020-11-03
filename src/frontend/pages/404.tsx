@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { NextPage } from 'next'
 import { Typography } from '@material-ui/core'
 import React, { ReactElement } from 'react'
-import AppBar from 'frontend/layouts/moduleViewer/AppBar'
+import AppBar from '../layouts/moduleViewer/AppBar'
 
 const useStyles = makeStyles((theme) => ({
   container: {

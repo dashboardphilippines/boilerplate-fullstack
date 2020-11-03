@@ -11,7 +11,7 @@ import next from 'next'
 import { parse } from 'url'
 
 import { resolvers, typeDefs } from './backend/controllers'
-import { Context } from './_types/context'
+import { Context } from './backend/_types/context'
 import { verifyJWT } from './backend/_utils/jwt'
 
 const app = express()
@@ -86,6 +86,6 @@ nextJSApp.prepare().then(() => {
   })
 
   app.listen(process.env.PORT || 3000, () => {
-    console.log('Server Ready')
+    console.log(`Server Ready on port ${process.env.PORT || 3000}`)
   })
 })

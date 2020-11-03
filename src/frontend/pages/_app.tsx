@@ -9,12 +9,12 @@ import Head from 'next/head'
 import ThemeProvider from '@material-ui/styles/ThemeProvider'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-import darkTheme from 'frontend/themes/darkTheme'
-import theme from 'frontend/themes/theme'
+import darkTheme from '../themes/darkTheme'
+import theme from '../themes/theme'
 
-import { ApolloProvider } from '@apollo/react-hooks'
-import client from 'frontend/apollo/client'
-import Notification from 'frontend/components/Notification'
+import { ApolloProvider } from '@apollo/client'
+import client from '../apollo/client'
+import Notification from '../components/Notification'
 
 class MyApp extends App {
   state = {
