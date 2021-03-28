@@ -1,17 +1,14 @@
-FROM node:14
+FROM node:14-alpine
 
-# Create app directory
+RUN apk --no-cache add tini
+
 WORKDIR /usr/src/app
 
-ENV NODE_ENV=production
-ENV PORT=8080
-
-COPY package*.json ./
-RUN npm install
 COPY . .
+RUN npm install && npm run build && npm prune --production
 
-RUN npm run build
-
-RUN ls .
 EXPOSE 8080
+ENV PORT=8080
+ENV NODE_ENV=production
+ENTRYPOINT [ "/sbin/tini", "--" ]
 CMD [ "node", "./dist/index.js" ]

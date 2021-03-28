@@ -1,0 +1,11 @@
+node_modules
+dist
+.github
+.vscode
+.git
+.env
+src/frontend/.next
+config
+README.md
+Dockerfile
+nodemon.json

@@ -2,7 +2,7 @@
 const globalAny: any = global
 import { makeStyles } from '@material-ui/core/styles'
 import React, { ReactElement, FunctionComponent } from 'react'
-import AppBar from './AppBar'
+import AppBarComponent from './AppBarComponent'
 import { NextPage } from 'next'
 import classnames from 'classnames'
 
@@ -43,7 +43,7 @@ export default (
 
   return (
     <>
-      <AppBar title={title} backRoute={backRoute} />
+      <AppBarComponent title={title} backRoute={backRoute} />
       <div className={wide ? classnames(classes.root, classes.wide) : classnames(classes.root, classes.narrow)}>
         <div className={classes.content}>
           <Page />

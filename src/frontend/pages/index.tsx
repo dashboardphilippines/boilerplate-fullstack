@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { NextPage } from 'next'
 import { Typography } from '@material-ui/core'
 import React, { ReactElement } from 'react'
-import AppBar from '../layouts/moduleViewer/AppBar'
+import AppBarComponent from '../layouts/moduleViewer/AppBarComponent'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -19,7 +19,7 @@ const Home: NextPage = (): ReactElement => {
 
   return (
     <>
-      <AppBar title='Project Boilerplate' />
+      <AppBarComponent title='Project Boilerplate' />
       <Typography color={'textPrimary'} variant={'h4'} className={classes.padding}>
         {'Hello, World!'}
       </Typography>

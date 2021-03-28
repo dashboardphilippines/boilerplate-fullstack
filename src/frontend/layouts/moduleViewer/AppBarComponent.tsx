@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default ({ title, backRoute }: { title: string; backRoute?: string }): ReactElement => {
+const AppBarComponent = ({ title, backRoute }: { title: string; backRoute?: string }): ReactElement => {
   const classes = useStyles({})
   const router = useRouter()
 
@@ -43,3 +43,5 @@ export default ({ title, backRoute }: { title: string; backRoute?: string }): Re
     </AppBar>
   )
 }
+
+export default AppBarComponent
