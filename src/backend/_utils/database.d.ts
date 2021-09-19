@@ -1,8 +1,8 @@
 import { Collection } from 'mongodb'
 import { User } from './users'
-import { SendgridTemplate } from './sendgridTemplates'
+import { Test } from './tests'
 
 export interface Database {
-  sendgrid_templates: Collection<SendgridTemplate>
+  tests: Collection<Test>
   users: Collection<User>
 }
