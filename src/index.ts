@@ -1,7 +1,7 @@
 require('dotenv').config()
 import 'graphql-import-node'
 
-import { ApolloServer, AuthenticationError, ForbiddenError, UserInputError } from 'apollo-server-express'
+import { ApolloServer, AuthenticationError, ForbiddenError, UserInputError, ExpressContext } from 'apollo-server-express'
 import { GraphQLFormattedError, GraphQLError } from 'graphql'
 import compression from 'compression'
 import cors from 'cors'
@@ -9,10 +9,15 @@ import express from 'express'
 import helmet from 'helmet'
 import next from 'next'
 import { parse } from 'url'
+import { Database } from './backend/_types/database'
+import _dbSetup from './backend/_utils/_dbSetup'
 
+import { MongoClient } from 'mongodb'
 import { resolvers, typeDefs } from './backend/controllers'
 import { Context } from './backend/_types/context'
 import { verifyJWT } from './backend/_utils/jwt'
+
+const MONGODB_URI: string = process.env.DB_URI || 'mongodb://localhost:27017';
 
 const app = express()
 app.set('trust proxy', true)
@@ -51,17 +56,21 @@ if (process.env.NODE_ENV) {
   )
 }
 
-nextJSApp.prepare().then(() => {
+nextJSApp.prepare().then(async () => {
+  
+  // const db = mongoClient.db('test')
+  // const database: Database = _dbSetup(db)
+
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: async ({ req, connection }): Promise<Context> => {
-      const headers = connection?.context?.headers || req?.headers
-      const ip = req.headers['CF-Connecting-IP'] || req.headers['X-Forwarded-For'] || req.ip
+    context: async (context: ExpressContext): Promise<Context> => {
+      const ip = context.req.headers['CF-Connecting-IP'] || context.req.headers['X-Forwarded-For'] || context.req.ip
 
       return {
+        // database,
         ip,
-        currentUserId: verifyJWT(headers.accesstoken)?.id
+        currentUserEmail: await verifyJWT(context.req.headers.accesstoken as string)
       }
     },
     formatError: (error: GraphQLError): GraphQLFormattedError => {

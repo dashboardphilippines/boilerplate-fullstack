@@ -3,6 +3,7 @@ import { NextPage } from 'next'
 import { Typography } from '@material-ui/core'
 import React, { ReactElement } from 'react'
 import AppBarComponent from '../layouts/moduleViewer/AppBarComponent'
+import TestComponent from 'frontend/components/testComponent'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -23,6 +24,7 @@ const Home: NextPage = (): ReactElement => {
       <Typography color={'textPrimary'} variant={'h4'} className={classes.padding}>
         {'Hello, World!'}
       </Typography>
+      <TestComponent />
     </>
   )
 }
