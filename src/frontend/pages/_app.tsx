@@ -14,7 +14,7 @@ import theme from '../themes/theme'
 
 import { ApolloProvider } from '@apollo/client'
 import client from '../apollo/client'
-import Notification from '../components/Notification'
+import Notification from '../components/_common/Notification'
 
 class MyApp extends App {
   state = {
