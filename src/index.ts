@@ -1,7 +1,7 @@
 require('dotenv').config()
 import 'graphql-import-node'
 
-import { ApolloServer, AuthenticationError, ForbiddenError, UserInputError } from 'apollo-server-express'
+import { ApolloServer, AuthenticationError, ForbiddenError, UserInputError, ExpressContext } from 'apollo-server-express'
 import { GraphQLFormattedError, GraphQLError } from 'graphql'
 import compression from 'compression'
 import cors from 'cors'
@@ -9,10 +9,15 @@ import express from 'express'
 import helmet from 'helmet'
 import next from 'next'
 import { parse } from 'url'
+import { Database } from './backend/_types/database'
+import _dbSetup from './backend/_utils/_dbSetup'
 
+import { MongoClient } from 'mongodb'
 import { resolvers, typeDefs } from './backend/controllers'
 import { Context } from './backend/_types/context'
-import { verifyJWT } from './backend/_utils/jwt'
+import { verifyJWT } from './backend/_utils/cloudflareJwt'
+
+const MONGODB_URI: string = process.env.DB_URI || 'mongodb://localhost:27017';
 
 const app = express()
 app.set('trust proxy', true)
@@ -31,37 +36,22 @@ const scriptSrc = [
   'https://www.googletagmanager.com/gtag/js'
 ]
 
-const styleSrc = ["'self'", "'unsafe-inline'", 'www.gstatic.com', '*.googleapis.com']
+nextJSApp.prepare().then(async () => {
 
-if (process.env.NODE_ENV) {
-  app.use(helmet())
-  app.use(helmet.frameguard({ action: 'deny' }))
-  app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
-  app.use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        defaultSrc: ["'none'"],
-        fontSrc: ["'self'", 'data:', 'https:'],
-        imgSrc: ["'self'", 'data:', 'https:'],
-        connectSrc: ["'self'"],
-        scriptSrc,
-        styleSrc
-      }
-    })
-  )
-}
+  //IF USING CONNECTING A MONGO DATABASE, uncomment out lines 43, 44 and 53
+  // const db = mongoClient.db('test')
+  // const database: Database = _dbSetup(db)
 
-nextJSApp.prepare().then(() => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: async ({ req, connection }): Promise<Context> => {
-      const headers = connection?.context?.headers || req?.headers
-      const ip = req.headers['CF-Connecting-IP'] || req.headers['X-Forwarded-For'] || req.ip
+    context: async (context: ExpressContext): Promise<Context> => {
+      const ip = context.req.headers['CF-Connecting-IP'] || context.req.headers['X-Forwarded-For'] || context.req.ip
 
       return {
+        // database,
         ip,
-        currentUserId: verifyJWT(headers.accesstoken)?.id
+        // currentUserEmail: await verifyJWT(context.req.headers.accesstoken as string) uncomment if using Cloudflare Access
       }
     },
     formatError: (error: GraphQLError): GraphQLFormattedError => {

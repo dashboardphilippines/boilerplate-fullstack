@@ -1,4 +1,7 @@
+import { Database } from './database'
+
 export interface Context {
   ip?: string | string[]
-  currentUserId?: string
+  currentUserEmail?: string
+  database?: Database
 }

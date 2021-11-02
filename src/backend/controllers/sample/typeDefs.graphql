@@ -9,5 +9,5 @@ extend type Query {
 }
 
 extend type Mutation {
-  test_mutation(id: ID!, message: String!): Test
+  test_mutation(id: String!, message: String): Test
 }
