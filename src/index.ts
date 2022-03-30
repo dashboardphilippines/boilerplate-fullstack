@@ -44,7 +44,8 @@ const scriptSrc = [
 
 nextJSApp.prepare().then(async () => {
   //IF USING CONNECTING A MONGO DATABASE, uncomment out lines 43, 44 and 53
-  // const db = mongoClient.db('test')
+  // const mongoClient: MongoClient = await MongoClient.connect(MONGODB_URI)
+  // const db = mongoClient.db('')
   // const database: Database = _dbSetup(db)
 
   const server = new ApolloServer({
