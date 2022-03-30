@@ -1,12 +1,12 @@
 import React, { ReactElement, KeyboardEvent } from 'react'
 import { makeStyles } from '@mui/styles'
 
-import TextField from '@material-ui/core/TextField'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import SearchIcon from '@material-ui/icons/Search'
-import IconButton from '@material-ui/core/IconButton'
-import CancelIcon from '@material-ui/icons/Cancel'
-import Button from '@material-ui/core/Button'
+import TextField from '@mui/material/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
+import SearchIcon from '@mui/icons-material/Search'
+import IconButton from '@mui/material/IconButton'
+import CancelIcon from '@mui/icons-material/Cancel'
+import Button from '@mui/material/Button'
 
 const useStyles = makeStyles((theme) => ({
   root: {

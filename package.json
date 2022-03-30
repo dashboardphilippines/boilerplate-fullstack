@@ -7,7 +7,7 @@
     "dev": "nodemon --exec ts-node src/index.ts",
     "build": "rm -rf dist && next build src/frontend && tsc --build tsconfig.json && copyfiles -u 1 **/*.graphql dist && copyfiles -u 1 **/*.pdf dist && copyfiles -u 1 **/*.ttf dist && copyfiles -u 1 **/*.png dist",
     "start": "NODE_ENV=production node dist/index.js",
-    "lint": "eslint ./pages ./src --ext .js,.jsx,.ts,.tsx --fix && npx unimported",
+    "lint": "eslint ./pages ./src --ext .js,.jsx,.ts,.tsx --fix ",
     "pretty": "prettier --write ."
   },
   "repository": {
@@ -45,10 +45,6 @@
     "@apollo/client": "^3.3.13",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.56",
-    "@material-ui/styles": "^4.11.3",
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.3",
     "@mui/styles": "^5.5.3",

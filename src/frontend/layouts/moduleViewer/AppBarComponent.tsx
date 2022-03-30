@@ -3,10 +3,10 @@ const globalAny: any = global
 import { makeStyles } from '@mui/styles'
 import React, { ReactElement } from 'react'
 import { useRouter } from 'next/router'
-import IconButton from '@material-ui/core/IconButton'
+import IconButton from '@mui/material/IconButton'
 import { AppBar, Toolbar } from '@mui/material'
-import ArrowLeftIcon from '@material-ui/icons/ArrowBackIos'
-import Typography from '@material-ui/core/Typography'
+import ArrowLeftIcon from '@mui/icons-material/ArrowBackIos'
+import Typography from '@mui/material/Typography'
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {

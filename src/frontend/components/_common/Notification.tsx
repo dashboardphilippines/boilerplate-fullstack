@@ -2,7 +2,7 @@
 const globalAny: any = global
 
 import React, { ReactElement, useState } from 'react'
-import Snackbar from '@material-ui/core/Snackbar'
+import Snackbar from '@mui/material/Snackbar'
 import MuiAlert, { Color } from '@material-ui/lab/Alert'
 
 const Notification = (): ReactElement => {
