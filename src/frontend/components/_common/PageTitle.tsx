@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 
 import Head from 'next/head'
 import Typography from '@material-ui/core/Typography'

@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import classNames from 'classnames'
 
 import Paper from '@material-ui/core/Paper'

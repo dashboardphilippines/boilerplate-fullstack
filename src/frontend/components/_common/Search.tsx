@@ -1,5 +1,5 @@
 import React, { ReactElement, KeyboardEvent } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'

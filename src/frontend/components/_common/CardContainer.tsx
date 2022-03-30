@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'

@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
 import { useQuery } from '@apollo/client'
 
 import query from './query'
-import { Typography, makeStyles } from '@material-ui/core'
+import { Typography, makeStyles } from '@mui/material'
 import PaperContainer from '../components/_common/PaperContainer'
 
 const useStyles = makeStyles((theme) => ({

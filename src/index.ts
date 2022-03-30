@@ -1,7 +1,13 @@
 require('dotenv').config()
 import 'graphql-import-node'
 
-import { ApolloServer, AuthenticationError, ForbiddenError, UserInputError, ExpressContext } from 'apollo-server-express'
+import {
+  ApolloServer,
+  AuthenticationError,
+  ForbiddenError,
+  UserInputError,
+  ExpressContext
+} from 'apollo-server-express'
 import { GraphQLFormattedError, GraphQLError } from 'graphql'
 import compression from 'compression'
 import cors from 'cors'
@@ -17,7 +23,7 @@ import { resolvers, typeDefs } from './backend/controllers'
 import { Context } from './backend/_types/context'
 import { verifyJWT } from './backend/_utils/cloudflareJwt'
 
-const MONGODB_URI: string = process.env.DB_URI || 'mongodb://localhost:27017';
+const MONGODB_URI: string = process.env.DB_URI || 'mongodb://localhost:27017'
 
 const app = express()
 app.set('trust proxy', true)
@@ -37,7 +43,6 @@ const scriptSrc = [
 ]
 
 nextJSApp.prepare().then(async () => {
-
   //IF USING CONNECTING A MONGO DATABASE, uncomment out lines 43, 44 and 53
   // const db = mongoClient.db('test')
   // const database: Database = _dbSetup(db)
@@ -50,7 +55,7 @@ nextJSApp.prepare().then(async () => {
 
       return {
         // database,
-        ip,
+        ip
         // currentUserEmail: await verifyJWT(context.req.headers.accesstoken as string) uncomment if using Cloudflare Access
       }
     },
