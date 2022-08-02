@@ -3,16 +3,16 @@ const globalAny: any = global
 
 import React, { ReactElement, useState } from 'react'
 import Snackbar from '@mui/material/Snackbar'
-import MuiAlert, { Color } from '@material-ui/lab/Alert'
+import MuiAlert, { AlertColor } from '@mui/material/Alert'
 
 const Notification = (): ReactElement => {
   const [open, setOpen] = useState(false)
 
   const [message, setMessage] = useState('')
 
-  const [type, setType] = useState<Color>('info')
+  const [type, setType] = useState<AlertColor>('info')
 
-  globalAny.setNotification = (type: Color, message: string): void => {
+  globalAny.setNotification = (type: AlertColor, message: string): void => {
     setOpen(true)
     setMessage(message)
     setType(type)
