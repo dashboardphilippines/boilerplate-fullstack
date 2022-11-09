@@ -1,7 +1,8 @@
 import React, { ReactElement, FunctionComponent } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import makeStyles from '@mui/styles/makeStyles'
+import { useTheme } from '@mui/material/styles'
 import { NextPage } from 'next'
-import Typography from '@material-ui/core/Typography'
+import Typography from '@mui/material/Typography'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -47,6 +48,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default (Page: FunctionComponent) => (): FunctionComponent | NextPage | ReactElement => {
   const classes = useStyles({})
+  const theme = useTheme()
+
   return (
     <>
       <div className={classes.background} />

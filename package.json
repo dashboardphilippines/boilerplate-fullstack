@@ -7,7 +7,8 @@
     "dev": "nodemon --exec ts-node src/index.ts",
     "build": "rm -rf dist && next build src/frontend && tsc --build tsconfig.json && copyfiles -u 1 **/*.graphql dist && copyfiles -u 1 **/*.pdf dist && copyfiles -u 1 **/*.ttf dist && copyfiles -u 1 **/*.png dist",
     "start": "NODE_ENV=production node dist/index.js",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix && prettier --write ."
+    "lint": "eslint ./pages ./src --ext .js,.jsx,.ts,.tsx --fix ",
+    "pretty": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -42,10 +43,11 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.13",
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.56",
-    "@material-ui/styles": "^4.11.3",
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.5.1",
+    "@mui/material": "^5.5.3",
+    "@mui/styles": "^5.5.3",
     "apollo-server-express": "^2.22.2",
     "axios": "^0.21.4",
     "classnames": "^2.2.6",
@@ -59,7 +61,7 @@
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.1.1",
-    "next": "^10.1.2",
+    "next": "^12.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }

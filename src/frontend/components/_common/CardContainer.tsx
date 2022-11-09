@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 
-import Card from '@material-ui/core/Card'
-import CardHeader from '@material-ui/core/CardHeader'
-import CardContent from '@material-ui/core/CardContent'
-import CardActions from '@material-ui/core/CardActions'
-import Collapse from '@material-ui/core/Collapse'
-import LinearProgress from '@material-ui/core/LinearProgress'
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardContent from '@mui/material/CardContent'
+import CardActions from '@mui/material/CardActions'
+import Collapse from '@mui/material/Collapse'
+import LinearProgress from '@mui/material/LinearProgress'
 
 import classnames from 'classnames'
 

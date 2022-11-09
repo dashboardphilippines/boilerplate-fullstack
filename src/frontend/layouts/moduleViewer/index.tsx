@@ -1,6 +1,6 @@
 //eslint-disable-next-line
 const globalAny: any = global
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import React, { ReactElement, FunctionComponent } from 'react'
 import AppBarComponent from './AppBarComponent'
 import { NextPage } from 'next'

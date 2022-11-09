@@ -1,14 +1,14 @@
 import React, { ReactElement } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 
-import Dialog from '@material-ui/core/Dialog'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogActions from '@material-ui/core/DialogActions'
+import Dialog from '@mui/material/Dialog'
+import DialogTitle from '@mui/material/DialogTitle'
+import DialogContent from '@mui/material/DialogContent'
+import DialogActions from '@mui/material/DialogActions'
 
-import CircularProgress from '@material-ui/core/CircularProgress'
-import Collapse from '@material-ui/core/Collapse'
-import Button from '@material-ui/core/Button'
+import CircularProgress from '@mui/material/CircularProgress'
+import Collapse from '@mui/material/Collapse'
+import Button from '@mui/material/Button'
 
 const useStyles = makeStyles((theme) => ({
   loadingColumn: {
@@ -81,7 +81,7 @@ const ModalContainer = ({
       <DialogActions disableSpacing className={classes.buttons}>
         {tertiaryButtonTitle && (
           <Button
-            color={'default'}
+            color={'primary'}
             className={classes.button}
             onClick={tertiaryButtonOnClick}
             disabled={loading || Boolean(tertiaryButtonDisabled)}

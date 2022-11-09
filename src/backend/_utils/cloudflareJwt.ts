@@ -1,4 +1,3 @@
-
 //only use this for adding cloudflare access
 import jwt from 'jsonwebtoken'
 import axios from 'axios'

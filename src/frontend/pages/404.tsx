@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import { NextPage } from 'next'
-import { Typography } from '@material-ui/core'
+import { Typography } from '@mui/material'
 import React, { ReactElement } from 'react'
 import AppBarComponent from '../layouts/moduleViewer/AppBarComponent'
 
