@@ -45,7 +45,7 @@ const TestComponent = (): ReactElement => {
   return (
     <>
       {data?.tests?.map((testDatum: any, index: number) => (
-        <div className={classes.root}>
+        <div className={classes.root} key={index}>
           <Typography key={index}>{testDatum?.id}</Typography>
           <Typography key={index}>{testDatum?.message}</Typography>
         </div>
