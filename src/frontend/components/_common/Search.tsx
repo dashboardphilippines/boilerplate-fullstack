@@ -1,11 +1,11 @@
 import React, { ReactElement, KeyboardEvent } from 'react'
-
 import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
 import SearchIcon from '@mui/icons-material/Search'
 import IconButton from '@mui/material/IconButton'
 import CancelIcon from '@mui/icons-material/Cancel'
 import Button from '@mui/material/Button'
+
 const Search = ({
   searchText,
   setSearchText,

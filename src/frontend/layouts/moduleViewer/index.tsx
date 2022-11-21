@@ -1,5 +1,6 @@
 //eslint-disable-next-line
 const globalAny: any = global
+
 import React, { ReactElement, FunctionComponent } from 'react'
 import AppBarComponent from './AppBarComponent'
 import { NextPage } from 'next'

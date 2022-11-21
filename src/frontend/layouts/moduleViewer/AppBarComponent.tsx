@@ -1,5 +1,6 @@
 //eslint-disable-next-line
 const globalAny: any = global
+
 import React, { ReactElement } from 'react'
 import { useRouter } from 'next/router'
 import IconButton from '@mui/material/IconButton'

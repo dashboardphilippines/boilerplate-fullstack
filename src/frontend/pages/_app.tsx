@@ -9,7 +9,6 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
 import { ThemeProvider } from '@mui/material/styles'
-
 import darkTheme from '../themes/darkTheme'
 import theme from '../themes/theme'
 
@@ -41,9 +40,11 @@ declare global {
 }
 
 const clientSideEmotionCache = createEmotionCache()
+
 interface MyAppProps extends AppProps {
 	emotionCache?: EmotionCache
 }
+
 class MyApp extends App {
   state = {
     darkTheme: false

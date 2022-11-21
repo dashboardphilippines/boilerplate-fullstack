@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react'
-
 import Head from 'next/head'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
