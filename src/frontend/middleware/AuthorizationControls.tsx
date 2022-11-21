@@ -8,19 +8,10 @@ import { useQuery } from '@apollo/client'
 import query from './query'
 
 import Typography  from '@mui/material/Typography'
-import makeStyles from '@mui/styles/makeStyles'
 import PaperContainer from '../components/_common/PaperContainer'
-
-const useStyles = makeStyles((theme) => ({
-  container: {
-    maxWidth: theme.spacing(64),
-    margin: 'auto'
-  }
-}))
+import theme from 'frontend/themes/theme'
 
 const AuthorizationControls = ({ children }: { children: ReactElement | ReactElement[] }): ReactElement => {
-  const classes = useStyles()
-
   const [show, setShow] = useState(false)
 
   const accesstoken = Cookies.get('accessToken')
@@ -57,7 +48,7 @@ const AuthorizationControls = ({ children }: { children: ReactElement | ReactEle
 
   if (loading) {
     return (
-      <div className={classes.container}>
+      <div style={{ maxWidth: theme.spacing(64), margin: 'auto' }}>
         <PaperContainer
           borderPrimary
           content={
@@ -74,7 +65,7 @@ const AuthorizationControls = ({ children }: { children: ReactElement | ReactEle
     return <>{children}</>
   }
 
-  return null
+  return <></>
 }
 
 export default AuthorizationControls

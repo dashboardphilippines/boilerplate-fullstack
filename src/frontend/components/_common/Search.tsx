@@ -1,5 +1,4 @@
 import React, { ReactElement, KeyboardEvent } from 'react'
-import { makeStyles } from '@mui/styles'
 
 import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
@@ -7,21 +6,6 @@ import SearchIcon from '@mui/icons-material/Search'
 import IconButton from '@mui/material/IconButton'
 import CancelIcon from '@mui/icons-material/Cancel'
 import Button from '@mui/material/Button'
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'start',
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2)
-  },
-  textInput: {
-    marginRight: theme.spacing()
-  }
-}))
-
 const Search = ({
   searchText,
   setSearchText,
@@ -39,13 +23,22 @@ const Search = ({
   onSearch?: () => void
   searchButtonDisabled?: boolean
 }): ReactElement => {
-  const classes = useStyles({})
-
   return (
-    <div className={classes.root}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'start',
+        marginTop: 2,
+        marginBottom: 2
+      }}
+    >
       <TextField
         fullWidth
-        className={classes.textInput}
+        sx={((theme) => ({
+          marginRight: theme.spacing(),
+        }))}
         variant={'outlined'}
         placeholder={'Search'}
         value={searchText}
@@ -74,6 +67,7 @@ const Search = ({
                 onClick={(): void => {
                   setSearchText('')
                 }}
+                size={'large'}
               >
                 <CancelIcon />
               </IconButton>
