@@ -1,26 +1,20 @@
-import { makeStyles } from '@mui/styles'
 import { NextPage } from 'next'
 import { Typography } from '@mui/material'
 import React, { ReactElement } from 'react'
 import AppBarComponent from '../layouts/moduleViewer/AppBarComponent'
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    maxWidth: theme.spacing(64),
-    margin: 'auto'
-  },
-  padding: {
-    padding: theme.spacing(2)
-  }
-}))
 
 const NotFoundPage: NextPage = (): ReactElement => {
-  const classes = useStyles()
-
   return (
     <>
       <AppBarComponent title='Project Boilerplate' backRoute='/' />
-      <Typography color={'textPrimary'} variant={'h4'} className={classes.padding}>
+      <Typography
+        color={'textPrimary'}
+        variant={'h4'}
+        sx={{ padding: ((theme) => ({
+					marginBottom: theme.spacing()
+				})) }}
+      >
         {'Error 404: Page Not Found'}
       </Typography>
     </>

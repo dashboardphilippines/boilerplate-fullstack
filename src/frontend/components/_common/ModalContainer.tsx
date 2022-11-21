@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react'
-import { makeStyles } from '@mui/styles'
 
 import Dialog from '@mui/material/Dialog'
 import DialogTitle from '@mui/material/DialogTitle'
@@ -9,27 +8,6 @@ import DialogActions from '@mui/material/DialogActions'
 import CircularProgress from '@mui/material/CircularProgress'
 import Collapse from '@mui/material/Collapse'
 import Button from '@mui/material/Button'
-
-const useStyles = makeStyles((theme) => ({
-  loadingColumn: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttons: {
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column'
-    }
-  },
-  button: {
-    [theme.breakpoints.down('sm')]: {
-      marginTop: theme.spacing(1)
-    }
-  }
-}))
 
 const ModalContainer = ({
   open,
@@ -67,22 +45,43 @@ const ModalContainer = ({
   maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | false
   fullScreen?: boolean
 }): ReactElement => {
-  const classes = useStyles({})
-
   return (
     <Dialog open={Boolean(open)} onClose={onClose} fullWidth fullScreen={fullScreen} maxWidth={maxWidth || 'lg'}>
       {title && <DialogTitle>{title}</DialogTitle>}
       <DialogContent>
         <Collapse in={Boolean(!loading && content)}>{content}</Collapse>
-        <Collapse in={loading} className={classes.loadingColumn}>
+        <Collapse
+          in={loading}
+          sx={
+            {
+              display: 'flex',
+              flex: 1,
+              flexDirection: 'column',
+              width: '100%',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }
+          }
+        >
           <CircularProgress />
         </Collapse>
       </DialogContent>
-      <DialogActions disableSpacing className={classes.buttons}>
+      <DialogActions
+        disableSpacing
+        sx={(theme) => ({
+          [theme.breakpoints.down('md')]: {
+            flexDirection: 'column'
+          }
+        })}
+      >
         {tertiaryButtonTitle && (
           <Button
-            color={'default'}
-            className={classes.button}
+            color={'primary'}
+            sx={(theme) => ({
+              [theme.breakpoints.down('md')]: {
+                marginTop: theme.spacing(1)
+              }
+            })}
             onClick={tertiaryButtonOnClick}
             disabled={loading || Boolean(tertiaryButtonDisabled)}
           >
@@ -93,7 +92,11 @@ const ModalContainer = ({
           <Button
             id={'modal-secondary-button'}
             color={'secondary'}
-            className={classes.button}
+            sx={(theme) => ({
+              [theme.breakpoints.down('md')]: {
+                marginTop: theme.spacing(1)
+              }
+            })}
             onClick={secondaryButtonOnClick}
             disabled={loading || Boolean(secondaryButtonDisabled)}
           >
@@ -104,7 +107,11 @@ const ModalContainer = ({
           <Button
             id={'modal-primary-button'}
             color={'primary'}
-            className={classes.button}
+            sx={(theme) => ({
+              [theme.breakpoints.down('md')]: {
+                marginTop: theme.spacing(1)
+              }
+            })}
             onClick={primaryButtonOnClick}
             disabled={loading || Boolean(primaryButtonDisabled)}
           >

@@ -1,7 +1,8 @@
 import React, { ReactElement } from 'react'
-import { makeStyles } from '@mui/styles'
+import { styled } from '@mui/material/styles'
 
 import Card from '@mui/material/Card'
+import CardMedia from '@mui/material/CardMedia'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
@@ -10,27 +11,50 @@ import LinearProgress from '@mui/material/LinearProgress'
 
 import classnames from 'classnames'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
+const PREFIX = 'CardContainer'
+
+const classes = {
+  root: `${PREFIX}-root`,
+  maxHeight: `${PREFIX}-maxHeight`,
+  media: `${PREFIX}-media`,
+  borderSecondary: `${PREFIX}-borderSecondary`,
+  borderPrimaryTop: `${PREFIX}-borderPrimaryTop`,
+  borderSecondaryTop: `${PREFIX}-borderSecondaryTop`
+}
+
+const StyledCard = styled(Card)(({ theme }) => ({
+  [`&.${classes.root}`]: {
     marginBottom: theme.spacing()
   },
-  borderSecondary: {
-    borderLeft: `${theme.spacing()}px solid ${theme.palette.secondary.main}`
+
+  [`& .${classes.maxHeight}`]: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%'
   },
-  borderPrimaryTop: {
-    borderTop: `${theme.spacing()}px solid ${theme.palette.primary.main}`
+
+  [`& .${classes.media}`]: {
+    height: 0,
+    paddingTop: '56.25%' // 16:9
   },
-  borderSecondaryTop: {
-    borderTop: `${theme.spacing()}px solid #9a0026`
+
+  [`& .${classes.borderSecondary}`]: {
+    borderLeft: `${theme.spacing()} solid ${theme.palette.secondary.dark}`
   },
-  content: {
-    overflow: 'scroll'
+
+  [`& .${classes.borderPrimaryTop}`]: {
+    borderTop: `${theme.spacing()} solid ${theme.palette.primary.dark}`
+  },
+
+  [`& .${classes.borderSecondaryTop}`]: {
+    borderTop: `${theme.spacing()} solid ${theme.palette.secondary.dark}`
   }
 }))
 
 const CardContainer = ({
   avatar,
   title,
+  imageUrl,
   subheader,
   content,
   children,
@@ -39,10 +63,12 @@ const CardContainer = ({
   loading = false,
   borderSecondary = false,
   borderPrimaryTop = false,
-  borderSecondaryTop = false
+  borderSecondaryTop = false,
+  maxHeight = false
 }: {
   avatar?: ReactElement
   title?: string
+  imageUrl?: string
   subheader?: string
   content?: ReactElement
   children?: ReactElement | ReactElement[]
@@ -52,16 +78,16 @@ const CardContainer = ({
   borderSecondary?: boolean
   borderPrimaryTop?: boolean
   borderSecondaryTop?: boolean
+  maxHeight?: boolean
 }): ReactElement => {
-  const classes = useStyles({})
-
   return (
-    <Card
+    <StyledCard
       className={classnames(
         classes.root,
         borderSecondary ? classes.borderSecondary : '',
         borderPrimaryTop ? classes.borderPrimaryTop : '',
-        borderSecondaryTop ? classes.borderSecondaryTop : ''
+        borderSecondaryTop ? classes.borderSecondaryTop : '',
+        maxHeight ? classes.maxHeight : ''
       )}
       variant={'outlined'}
       elevation={0}
@@ -72,14 +98,22 @@ const CardContainer = ({
       {(avatar || title || subheader || headerAction) && (
         <CardHeader avatar={avatar} title={title} subheader={subheader} action={headerAction} />
       )}
+      {imageUrl && <CardMedia className={classes.media} image={imageUrl} title={'Image'} />}
       {(content || children) && (
-        <CardContent className={classes.content}>
+        <CardContent>
           {content}
           {children}
         </CardContent>
       )}
+      {maxHeight && (
+        <div
+          style={{
+            flex: 1
+          }}
+        />
+      )}
       {actions && <CardActions>{actions}</CardActions>}
-    </Card>
+    </StyledCard>
   )
 }
 
