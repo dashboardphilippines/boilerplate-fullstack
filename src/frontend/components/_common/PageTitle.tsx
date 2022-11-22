@@ -12,7 +12,6 @@ const PageTitle = ({
   buttonTitle?: string
   buttonOnClick?: VoidFunction
 }): ReactElement => {
-
   return (
     <>
       <Head>
@@ -20,9 +19,9 @@ const PageTitle = ({
       </Head>
       {buttonTitle && (
         <Button
-          sx={((theme) => ({
+          sx={(theme) => ({
             marginBottom: theme.spacing()
-          }))}
+          })}
           variant={'outlined'}
           onClick={buttonOnClick}
         >
@@ -32,9 +31,10 @@ const PageTitle = ({
       <Typography
         variant={'h4'}
         gutterBottom
-        sx={((theme) => ({
+        sx={(theme) => ({
           marginBottom: theme.spacing()
-        }))}>
+        })}
+      >
         {title}
       </Typography>
     </>

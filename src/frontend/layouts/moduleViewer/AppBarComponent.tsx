@@ -16,9 +16,9 @@ const AppBarComponent = ({ title, backRoute }: { title: string; backRoute?: stri
       <Toolbar>
         {backRoute && (
           <IconButton
-            sx={((theme) => ({
-              marginRight: theme.spacing(2),
-            }))}
+            sx={(theme) => ({
+              marginRight: theme.spacing(2)
+            })}
             edge={'start'}
             color={'inherit'}
             onClick={(): void => {

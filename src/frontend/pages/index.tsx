@@ -11,9 +11,11 @@ const Home: NextPage = (): ReactElement => {
       <Typography
         color={'textPrimary'}
         variant={'h4'}
-        sx={{ padding: ((theme) => ({
-					marginBottom: theme.spacing()
-				})) }}
+        sx={{
+          padding: (theme) => ({
+            marginBottom: theme.spacing()
+          })
+        }}
       >
         {'Hello, World!'}
       </Typography>

@@ -15,17 +15,11 @@ import theme from '../themes/theme'
 import { ApolloProvider } from '@apollo/client'
 import client from '../apollo/client'
 
-import { Theme } from '@mui/material'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import createEmotionCache from '../_utils/createEmotionCache'
 
 const CssBaseline = dynamic(() => import('@mui/material/CssBaseline'))
 const Notification = dynamic(() => import('../components/_common/Notification'))
-
-declare module '@mui/material/styles' {
-	interface DefaultTheme extends Theme {}
-}
-
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace NodeJS {
@@ -42,7 +36,7 @@ declare global {
 const clientSideEmotionCache = createEmotionCache()
 
 interface MyAppProps extends AppProps {
-	emotionCache?: EmotionCache
+  emotionCache?: EmotionCache
 }
 
 class MyApp extends App {
@@ -69,7 +63,10 @@ class MyApp extends App {
         <CacheProvider value={emotionCache}>
           <Head>
             <title>{'App Boilerplate'}</title>
-            <meta name={'viewport'} content={'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'} />
+            <meta
+              name={'viewport'}
+              content={'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'}
+            />
           </Head>
           <ThemeProvider theme={globalAny.darkTheme ? darkTheme : theme}>
             <CssBaseline />

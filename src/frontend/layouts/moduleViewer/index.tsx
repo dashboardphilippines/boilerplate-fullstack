@@ -49,5 +49,3 @@ export default (
       </>
     )
   }
-
-//<div styles={wide ? classnames(classes.root, classes.wide) : classnames(classes.root, classes.narrow)}>

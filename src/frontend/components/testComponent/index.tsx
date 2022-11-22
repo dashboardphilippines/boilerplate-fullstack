@@ -1,3 +1,6 @@
+//eslint-disable-next-line
+const globalAny: any = global
+
 import React, { ReactElement, useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 import query from './query'
@@ -6,13 +9,11 @@ import mutation from './mutation'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
-const globalAny: any = global
-
 const TestComponent = (): ReactElement => {
   const [testData, setTestData] = useState<[]>()
 
   const { data, loading } = useQuery(query, {
-    onCompleted: (e) => {
+    onCompleted: () => {
       setTestData(data)
     }
   })
@@ -23,7 +24,7 @@ const TestComponent = (): ReactElement => {
 
   const [mutateData, mutationState] = useMutation(mutation, {
     variables,
-    onCompleted: (e) => {
+    onCompleted: () => {
       globalAny.setNotification('success', 'Mutation successful')
     },
     onError: (error) => {
@@ -38,7 +39,7 @@ const TestComponent = (): ReactElement => {
 
   return (
     <>
-      {data?.tests?.map((testDatum: any, index: number) => (
+      {data?.tests?.map((testDatum: { id: string; message: string }, index: number) => (
         <div style={{ margin: 2.5 }} key={index}>
           <Typography key={index}>{testDatum?.id}</Typography>
           <Typography key={index}>{testDatum?.message}</Typography>

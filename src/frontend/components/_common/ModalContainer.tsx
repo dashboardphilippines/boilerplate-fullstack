@@ -52,16 +52,14 @@ const ModalContainer = ({
         <Collapse in={Boolean(!loading && content)}>{content}</Collapse>
         <Collapse
           in={loading}
-          sx={
-            {
-              display: 'flex',
-              flex: 1,
-              flexDirection: 'column',
-              width: '100%',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }
-          }
+          sx={{
+            display: 'flex',
+            flex: 1,
+            flexDirection: 'column',
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
         >
           <CircularProgress />
         </Collapse>

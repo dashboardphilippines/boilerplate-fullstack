@@ -1,5 +1,7 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-    enabled: process.env.ANALYZE === 'true',
+  enabled: process.env.ANALYZE === 'true'
 })
 
-module.exports = withBundleAnalyzer({})
+module.exports = withBundleAnalyzer({
+  swcMinify: false
+})

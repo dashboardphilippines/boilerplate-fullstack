@@ -19,7 +19,7 @@
     "jsx": "preserve",
     "resolveJsonModule": true,
     "strict": true,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "allowJs": true,
     "noEmit": true,
     "incremental": true

@@ -3,7 +3,6 @@ import { Typography } from '@mui/material'
 import React, { ReactElement } from 'react'
 import AppBarComponent from '../layouts/moduleViewer/AppBarComponent'
 
-
 const NotFoundPage: NextPage = (): ReactElement => {
   return (
     <>
@@ -11,9 +10,11 @@ const NotFoundPage: NextPage = (): ReactElement => {
       <Typography
         color={'textPrimary'}
         variant={'h4'}
-        sx={{ padding: ((theme) => ({
-					marginBottom: theme.spacing()
-				})) }}
+        sx={{
+          padding: (theme) => ({
+            marginBottom: theme.spacing()
+          })
+        }}
       >
         {'Error 404: Page Not Found'}
       </Typography>

@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/client'
 
 import query from './query'
 
-import Typography  from '@mui/material/Typography'
+import Typography from '@mui/material/Typography'
 import PaperContainer from '../components/_common/PaperContainer'
 import theme from 'frontend/themes/theme'
 

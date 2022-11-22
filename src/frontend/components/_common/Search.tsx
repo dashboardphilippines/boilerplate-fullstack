@@ -36,9 +36,9 @@ const Search = ({
     >
       <TextField
         fullWidth
-        sx={((theme) => ({
-          marginRight: theme.spacing(),
-        }))}
+        sx={(theme) => ({
+          marginRight: theme.spacing()
+        })}
         variant={'outlined'}
         placeholder={'Search'}
         value={searchText}

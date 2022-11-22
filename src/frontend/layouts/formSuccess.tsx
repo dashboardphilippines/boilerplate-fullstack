@@ -42,11 +42,7 @@ export default (Page: FunctionComponent) => (): FunctionComponent | NextPage | R
               display: 'block'
             }}
           />
-          <Typography
-            variant={'h4'}
-            align={'center'}
-            style={{ color: '#00B200', marginBottom: theme.spacing(3) }}
-          >
+          <Typography variant={'h4'} align={'center'} style={{ color: '#00B200', marginBottom: theme.spacing(3) }}>
             {'Specimen Submitted Successfully!'}
           </Typography>
           <div
