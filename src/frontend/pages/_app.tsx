@@ -4,20 +4,25 @@ const globalAny: any = global
 import React, { ReactElement } from 'react'
 
 import App from 'next/app'
+import { AppProps } from 'next/app'
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 
-import ThemeProvider from '@mui/styles/ThemeProvider'
-import CssBaseline from '@mui/material/CssBaseline'
-import { Theme } from '@mui/material'
-
+import { ThemeProvider } from '@mui/material/styles'
 import darkTheme from '../themes/darkTheme'
 import theme from '../themes/theme'
 
 import { ApolloProvider } from '@apollo/client'
 import client from '../apollo/client'
-import Notification from '../components/_common/Notification'
 
-declare module '@mui/styles/defaultTheme' {
+import { Theme } from '@mui/material'
+import { CacheProvider, EmotionCache } from '@emotion/react'
+import createEmotionCache from '../_utils/createEmotionCache'
+
+const CssBaseline = dynamic(() => import('@mui/material/CssBaseline'))
+const Notification = dynamic(() => import('../components/_common/Notification'))
+
+declare module '@mui/material/styles' {
 	interface DefaultTheme extends Theme {}
 }
 
@@ -33,13 +38,20 @@ declare global {
     }
   }
 }
+
+const clientSideEmotionCache = createEmotionCache()
+
+interface MyAppProps extends AppProps {
+	emotionCache?: EmotionCache
+}
+
 class MyApp extends App {
   state = {
     darkTheme: false
   }
 
   render(): ReactElement {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps, emotionCache = clientSideEmotionCache }: MyAppProps = this.props
 
     globalAny.toggleDarkTheme = (): void => {
       if (process.browser) {
@@ -54,17 +66,19 @@ class MyApp extends App {
 
     return (
       <>
-        <Head>
-          <title>{'App Boilerplate'}</title>
-          <meta name={'viewport'} content={'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'} />
-        </Head>
-        <ThemeProvider theme={globalAny.darkTheme ? darkTheme : theme}>
-          <CssBaseline />
-          <ApolloProvider client={client}>
-            <Component {...pageProps} />
-            <Notification />
-          </ApolloProvider>
-        </ThemeProvider>
+        <CacheProvider value={emotionCache}>
+          <Head>
+            <title>{'App Boilerplate'}</title>
+            <meta name={'viewport'} content={'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'} />
+          </Head>
+          <ThemeProvider theme={globalAny.darkTheme ? darkTheme : theme}>
+            <CssBaseline />
+            <ApolloProvider client={client}>
+              <Component {...pageProps} />
+              <Notification />
+            </ApolloProvider>
+          </ThemeProvider>
+        </CacheProvider>
       </>
     )
   }

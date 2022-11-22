@@ -1,20 +1,14 @@
 import React, { ReactElement, useState } from 'react'
-import { Button, Typography } from '@mui/material'
-import { makeStyles } from '@mui/styles'
 import { useQuery, useMutation } from '@apollo/client'
 import query from './query'
 import mutation from './mutation'
 
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+
 const globalAny: any = global
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: 2.5
-  }
-}))
-
 const TestComponent = (): ReactElement => {
-  const classes = useStyles()
   const [testData, setTestData] = useState<[]>()
 
   const { data, loading } = useQuery(query, {
@@ -45,7 +39,7 @@ const TestComponent = (): ReactElement => {
   return (
     <>
       {data?.tests?.map((testDatum: any, index: number) => (
-        <div className={classes.root} key={index}>
+        <div style={{ margin: 2.5 }} key={index}>
           <Typography key={index}>{testDatum?.id}</Typography>
           <Typography key={index}>{testDatum?.message}</Typography>
         </div>
@@ -55,7 +49,6 @@ const TestComponent = (): ReactElement => {
         variant='contained'
         color='primary'
         type='submit'
-        fullWidth
         disabled={mutationState.loading}
         onClick={() => mutateData()}
       >

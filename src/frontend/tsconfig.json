@@ -19,9 +19,10 @@
     "jsx": "preserve",
     "resolveJsonModule": true,
     "strict": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "allowJs": true,
-    "noEmit": true
+    "noEmit": true,
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
